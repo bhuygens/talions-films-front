@@ -5,46 +5,19 @@ import {useEffect} from "react";
 import {ImagesConfig} from "@/app/_common/domain/enums/config.enum";
 import {ImageModel} from "@/app/_common/domain/types/image.type";
 import ImageCardHomeComponent from "@/app/_common/components/images/image-card-home.component";
-import TranslateYComponent from "@/app/_common/components/translateY.component";
-import { getDatabase } from "./lib/notion";
-
-// const databaseId = process.env.NOTION_DATABASE_ID!
-
-const tabs = {
-  clips: "Clips",
-  events: "Evenements",
-  pubs: "Pubs",
-};
+import HomeImagesColumnComponent from "@/app/_common/components/layout/home-images-column.component";
+import {useHeaderContext} from "@/app/_common/domain/contexts/header/header.context";
 
 
 export default function Home() {
   const [scope, animate] = useAnimate()
-
+  const { setBrandPosition } = useHeaderContext()
   const baseUrl = `https://picsum.photos/${ImagesConfig.imageWidth}`
-    // const getProps = async () => {
-    //   const database = await getDatabase(databaseId);
-
-    //   return {
-    //     props: {
-    //       posts: database,
-    //     },
-    //     // Next.js will attempt to re-generate the page:
-    //     // - When a request comes in
-    //     // - At most once every second
-    //     // revalidate: 1, // In seconds
-    //   };
-    // };
-
-  // useEffect(() => {
-  //   getProps()
-  // }, [])
-
-  const generateRandomImagesLine = () => {
-    const images: ImageModel[] = [];
 
   useEffect(() => {
-    animate("img", {opacity: 1}, {duration: 5})
-  })
+    animate("img", {opacity: 1}, {duration: 5});
+    setBrandPosition('middle');
+  }, [])
   const generateRandomImagesColumn = () => {
     const images: ImageModel[] = [];
 
@@ -74,17 +47,16 @@ export default function Home() {
   return (
     <div className={"w-screen h-screen overflow-hidden flex flex-row justify-between relative p-6"} ref={scope}>
       <div className={"flex flex-row gap-12"}>
-        <TranslateYComponent baseVelocity={4}>{generateRandomImagesColumn()}</TranslateYComponent>
-        <TranslateYComponent baseVelocity={-8}>{generateRandomImagesColumn()}</TranslateYComponent>
+        <HomeImagesColumnComponent baseVelocity={4}>{generateRandomImagesColumn()}</HomeImagesColumnComponent>
+        <HomeImagesColumnComponent baseVelocity={-8}>{generateRandomImagesColumn()}</HomeImagesColumnComponent>
       </div>
 
 
 
       <div className={"flex flex-row gap-12"}>
-        <TranslateYComponent baseVelocity={7}>{generateRandomImagesColumn()}</TranslateYComponent>
-        <TranslateYComponent baseVelocity={-10}>{generateRandomImagesColumn()}</TranslateYComponent>
+        <HomeImagesColumnComponent baseVelocity={7}>{generateRandomImagesColumn()}</HomeImagesColumnComponent>
+        <HomeImagesColumnComponent baseVelocity={-10}>{generateRandomImagesColumn()}</HomeImagesColumnComponent>
       </div>
     </div>
   )
-}
 }
