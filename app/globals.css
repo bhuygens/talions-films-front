@@ -50,3 +50,11 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+.translate-50 {
+    transform: translate(-50%, -50%);
+}
+
+.text-shadow {
+
+}
