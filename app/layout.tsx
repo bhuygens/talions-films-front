@@ -3,8 +3,8 @@ import {Inter} from 'next/font/google'
 import Head from "next/head";
 import localFont from '@next/font/local'
 
-// const inter = Inter({subsets: ['latin']})
-const akira = localFont({src: '/assets/fonts/akira/akira.otf',})
+const inter = Inter({subsets: ['latin']})
+// const akira = localFont({src: '/assets/fonts/akira/akira.otf',})
 
 
 export const metadata = {
@@ -14,12 +14,12 @@ export const metadata = {
 
 export default function RootLayout({children,}: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={akira.className}>
+    <html lang="en" className={inter.className}>
     <Head>
       <title>Home App</title>
 
     </Head>
-    <body className={akira.className}>
+    <body className={inter.className}>
     {children}
     </body>
     </html>
