@@ -1,6 +1,9 @@
+@import "assets/styles/_fonts.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 
 :root {
     --foreground-rgb: 0, 0, 0;
@@ -19,17 +22,21 @@
 
 body {
     color: rgb(var(--foreground-rgb));
-    background: linear-gradient(
-            to bottom,
-            transparent,
-            rgb(var(--background-end-rgb))
-    ) rgb(var(--background-start-rgb));
+    background: #1E1E1E;
 }
 
 .translate-50 {
     transform: translate(-50%, -50%);
 }
 
-.text-shadow {
+.font-akira {
+    font-family: 'Akira', serif !important;
+}
 
+.font-kenyan-coffee {
+    font-family: 'Kenyan Coffee', serif !important;
+}
+
+.c-red {
+    color: #89283A;
 }
