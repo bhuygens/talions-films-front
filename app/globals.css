@@ -1,4 +1,5 @@
 @import "_common/assets/styles/_fonts.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -55,6 +56,14 @@ body {
     transform: translate(-50%, -50%);
 }
 
-.text-shadow {
+.font-akira {
+    font-family: 'Akira', serif !important;
+}
 
+.font-kenyan-coffee {
+    font-family: 'Kenyan Coffee', serif !important;
+}
+
+.c-red {
+    color: #89283A;
 }

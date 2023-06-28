@@ -3,7 +3,9 @@ import {Inter} from "next/font/google"
 import Head from "next/head";
 import Providers from "@/app/_common/domain/contexts/providers";
 
+
 const inter = Inter({subsets: ["latin"]})
+// const akira = localFont({src: '/assets/fonts/akira/akira.otf',})
 
 
 export const metadata = {
@@ -22,6 +24,7 @@ export default function RootLayout({children}: { children: React.ReactNode }) {
     <Providers>
       {children}
     </Providers>
+
     </body>
     </html>
   )
