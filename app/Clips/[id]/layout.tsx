@@ -1,6 +1,8 @@
 import React, {PropsWithChildren} from "react";
 
-type LayoutProps = {}
+type LayoutProps = {
+
+}
 
 function Layout({children}: LayoutProps & PropsWithChildren) {
   return (

@@ -27,7 +27,6 @@ export default function Home() {
       images.push({
         url: image,
         width: ImagesConfig.imageWidth,
-
         height: randomHeight,
       });
     }
@@ -51,6 +50,8 @@ export default function Home() {
         <HomeImagesColumnComponent baseVelocity={4}>{generateRandomImagesColumn()}</HomeImagesColumnComponent>
         <HomeImagesColumnComponent baseVelocity={-8}>{generateRandomImagesColumn()}</HomeImagesColumnComponent>
       </div>
+
+
 
       <div className={"flex flex-row gap-12"}>
         <HomeImagesColumnComponent baseVelocity={7}>{generateRandomImagesColumn()}</HomeImagesColumnComponent>

@@ -1,14 +1,14 @@
 "use client";
 
 import {HeaderProvider} from "@/app/_common/domain/contexts/header/header.context";
-import LogoComponent from "@/app/_common/components/logo.component";
-import TabsComponent from "@/app/_common/components/tabs.component";
+import BrandComponent from "@/app/_common/components/layout/brand.component";
+import TabsComponent from "@/app/_common/components/layout/tabs.component";
 
 export default function Providers({children}: any) {
   return (
     <>
       <HeaderProvider>
-        <LogoComponent/>
+        <BrandComponent/>
         <TabsComponent/>
         {children}
       </HeaderProvider>

@@ -7,7 +7,7 @@ import NavbarPositionComponent from "@/app/_common/components/layout/navbar-posi
 function BrandComponent() {
   const [scope, animate] = useAnimate()
   const [fontSizing, animateSizing] = useAnimate()
-  const {currentTab, brandPosition, setBrandPosition} = useHeaderContext();
+  const {currentTab, brandPosition, setBrandPosition, setCurrentTab} = useHeaderContext();
   const router = useRouter();
 
   useEffect(() => {
@@ -17,11 +17,13 @@ function BrandComponent() {
   useEffect(() => {
     if (currentTab !== "home" && brandPosition === "top" && window.location.pathname === "/") {
       moveBrandToTopLeftCorner()
-    } else {
-      moveBrandToCenter();
     }
   }, [currentTab])
 
+
+  useEffect(() => {
+    // TODO :
+  })
 
   const moveBrandToTopLeftCorner = () => {
     animate(scope.current, {
@@ -36,6 +38,7 @@ function BrandComponent() {
 
   const moveBrandToCenter = () => {
     setBrandPosition("middle");
+    setCurrentTab("home");
     animate((scope.current), {
       fontSize: "6rem",
       top: "50%",
@@ -59,7 +62,7 @@ function BrandComponent() {
 
   return (
     <>
-      {(currentTab !== "home" && window.location.pathname !== '/') && <NavbarPositionComponent/>}
+      {(currentTab !== "home" && window.location.pathname !== "/") && <NavbarPositionComponent/>}
       {window.location.pathname === "/" ?
         <motion.a
           initial="hidden"

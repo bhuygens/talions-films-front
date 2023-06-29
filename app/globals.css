@@ -19,6 +19,11 @@
     }
 }
 
+/*
+body, img, p, h1, span, button {
+    cursor: none !important;
+}
+ */
 
 body {
     color: rgb(var(--foreground-rgb));
@@ -66,4 +71,14 @@ body {
 
 .c-red {
     color: #89283A;
+}
+
+.neon-shadow:hover {
+    text-shadow: 0 0 10px yellow, 0 0 20px lime, 0 0 40px green, 0 0 80px darkgreen;
+}
+
+.letter-shadow {
+    background: linear-gradient(to right, #6f1e36 0%, #a80000 42%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }

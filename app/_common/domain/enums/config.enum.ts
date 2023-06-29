@@ -10,4 +10,7 @@ const ImagesConfig = {
   imagesPerLine: 10,
 }
 
+const IconConfig = {
+  width: 0
+}
 export {Tabs, ImagesConfig}

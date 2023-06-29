@@ -1,13 +1,14 @@
 "use client"
 import React, {createContext, ReactNode, useContext, useEffect, useState} from "react";
 import {usePathname} from "next/navigation";
+import WindowUtil from "@/app/_common/utils/window.util";
 
 type HeaderContextType = {
   currentTab: string;
   brandPosition: string;
   onTabClicked: (tab: string) => void;
   setBrandPosition: any;
-
+  setCurrentTab: any;
 };
 
 const HeaderContext = createContext<HeaderContextType | null>(null);
@@ -28,7 +29,7 @@ export const HeaderProvider = ({children}: HeaderProviderProps): JSX.Element => 
   const pathname = usePathname()
 
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [currentTab, setCurrentTab] = useState<string>("");
+  const [currentTab, setCurrentTab] = useState<string>("home");
   const [brandPosition, setBrandPosition] = useState<"top" | "middle">("middle");
 
   const onTabClicked = (newTab: string): void => {
@@ -36,25 +37,22 @@ export const HeaderProvider = ({children}: HeaderProviderProps): JSX.Element => 
     setCurrentTab(newTab);
   };
 
-
   const contextValue: HeaderContextType = {
     currentTab,
     onTabClicked,
     brandPosition,
-    setBrandPosition
+    setBrandPosition,
+    setCurrentTab,
   };
 
   useEffect(() => {
+
+    setCurrentTab(WindowUtil.getPathname())
     if (window.location.pathname !== "/") {
       setBrandPosition("top");
     }
     setIsLoading(false);
   }, [])
-
-  useEffect(() => {
-    console.log("pathhhh", pathname)
-    setCurrentTab(pathname.substring(1))
-  }, [pathname])
 
 
   return (

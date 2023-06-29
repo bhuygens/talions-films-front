@@ -20,6 +20,7 @@ function TabsComponent() {
       moveTabsToCenter();
     }
   }, [brandPosition])
+
   const moveTabsToTop = () => {
     animate(scope.current, {top: "10px"}, {duration: 2})
   }

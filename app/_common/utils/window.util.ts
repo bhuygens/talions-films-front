@@ -5,4 +5,8 @@ export default class WindowUtil {
     return (e.clientY < topTenPercentOfScreen) || (bottomTenPercentOfScreen < e.clientY && e.clientY < window.innerHeight);
   }
 
+  public static getPathname() {
+    console.log(window.location.pathname.split('/'));
+    return window.location.pathname.split('/')[1];
+  }
 }
