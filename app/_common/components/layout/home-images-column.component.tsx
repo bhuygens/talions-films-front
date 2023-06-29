@@ -9,6 +9,7 @@ import {
   useVelocity,
   wrap,
 } from "framer-motion";
+import WindowUtil from "@/app/_common/utils/window.util";
 
 type TranslateYComponentProps = {
   children: any,
@@ -17,7 +18,7 @@ type TranslateYComponentProps = {
   stiffness?: number,
 }
 
-function TranslateYComponent({children, baseVelocity = 5, damping = 0, stiffness = 0}: TranslateYComponentProps) {
+function HomeImagesColumnComponent({children, baseVelocity = 5, damping = 0, stiffness = 0}: TranslateYComponentProps) {
 
   let defaultVelocity = useRef(0);
   const baseY = useMotionValue(0);
@@ -43,24 +44,17 @@ function TranslateYComponent({children, baseVelocity = 5, damping = 0, stiffness
     baseY.set(baseY.get() + moveBy);
   });
 
-  const isHoverInTopTenOrLessTenPercentOfScreen = (e: any) => {
-    console.log("yPos", e.clientY);
-    const topTenPercentOfScreen = window.innerHeight - (window.innerHeight * 0.9);
-    const lessTenPercentOfScreen = window.innerHeight - topTenPercentOfScreen;
-    return (e.clientY < topTenPercentOfScreen) || (lessTenPercentOfScreen < e.clientY && e.clientY < window.innerHeight);
+  const reduceVelocity = () => {
+    return defaultVelocity.current > 0 ? 1 : -1;
   }
-  const hover = (e: any) => {
 
-    console.log(isHoverInTopTenOrLessTenPercentOfScreen(e));
-    console.log("before", baseVelocity)
-    if (isHoverInTopTenOrLessTenPercentOfScreen(e)) baseVelocity = (baseVelocity - (baseVelocity * 2));
-    console.log("after", baseVelocity);
-    
-    /*
-    e.type === "pointerenter" ?
-      (baseVelocity = defaultVelocity.current > 0 ? 1 : -1) :
-      (baseVelocity = defaultVelocity.current);
-     */
+  const hover = (e: MouseEvent) => {
+    if (e.type === "pointerenter") {
+      baseVelocity = reduceVelocity()
+      if (WindowUtil.isHoverInTopTenOrLessTenPercentOfScreen(e)) baseVelocity = (baseVelocity - (baseVelocity * 2));
+    } else {
+      baseVelocity = defaultVelocity.current;
+    }
   }
 
   return (
@@ -70,4 +64,4 @@ function TranslateYComponent({children, baseVelocity = 5, damping = 0, stiffness
   );
 }
 
-export default TranslateYComponent;
+export default HomeImagesColumnComponent;
