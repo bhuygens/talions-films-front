@@ -8,9 +8,9 @@ import ImageCardHomeComponent from "@/app/_common/components/images/image-card-h
 import HomeImagesColumnComponent from "@/app/_common/components/layout/home-images-column.component";
 import {useHeaderContext} from "@/app/_common/domain/contexts/header/header.context";
 
-
 export default function Home() {
   const [scope, animate] = useAnimate()
+
   const { setBrandPosition} = useHeaderContext()
   const baseUrl = `https://picsum.photos/${ImagesConfig.imageWidth}`
 

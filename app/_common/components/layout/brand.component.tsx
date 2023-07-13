@@ -15,9 +15,6 @@ function BrandComponent() {
   }, [animate, scope])
 
   useEffect(() => {
-    console.log('toto');
-    console.log('tab', currentTab);
-    console.log('brd', brandPosition);
     if (currentTab !== "home" && brandPosition === "top" && window.location.pathname === "/") {
       moveBrandToTopLeftCorner()
     } else {
