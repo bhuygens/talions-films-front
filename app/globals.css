@@ -1,0 +1,53 @@
+@import "_common/assets/styles/_fonts.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+    --foreground-rgb: 0, 0, 0;
+    --background-start-rgb: 214, 219, 220;
+    --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --foreground-rgb: 255, 255, 255;
+        --background-start-rgb: 0, 0, 0;
+        --background-end-rgb: 0, 0, 0;
+    }
+}
+
+
+body {
+    color: rgb(var(--foreground-rgb));
+    background: #1E1E1E;
+    cursor: url("https://png.pngitem.com/pimgs/s/268-2681442_green-glow-light-png-transparent-png.png") pointer;
+}
+
+.translate-50 {
+    transform: translate(-50%, -50%);
+}
+
+.font-akira {
+    font-family: 'Akira', serif !important;
+}
+
+.font-kenyan-coffee {
+    font-family: 'Kenyan Coffee', serif !important;
+}
+
+.c-red {
+    color: #89283A;
+}
+
+.neon-shadow:hover {
+    text-shadow: 0 0 10px yellow, 0 0 20px lime, 0 0 40px green, 0 0 80px darkgreen;
+}
+
+.letter-shadow {
+    background: linear-gradient(to right, #6f1e36 0%, #a80000 42%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
