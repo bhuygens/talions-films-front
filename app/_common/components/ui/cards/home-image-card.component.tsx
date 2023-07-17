@@ -1,14 +1,14 @@
 import React from "react";
 import Image from "next/image";
 
-type ImageCardHomeComponent = {
+type HomeImageCardComponent = {
   key: number,
   url: string,
   width: number,
   height: number,
 }
 
-function ImageCardHomeComponents({height, url, width}: ImageCardHomeComponent) {
+function ImageCardHomeComponents({height, url, width}: HomeImageCardComponent) {
 
   return (
     <Image loader={() => url}

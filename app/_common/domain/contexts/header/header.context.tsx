@@ -1,7 +1,7 @@
 "use client"
 import React, {createContext, ReactNode, useContext, useEffect, useState} from "react";
 import {usePathname} from "next/navigation";
-import WindowUtil from "@/app/_common/utils/window.util";
+import {CommonUtil} from "@/app/_common/utils/common.util";
 
 type HeaderContextType = {
   currentTab: string;
@@ -26,7 +26,8 @@ type HeaderProviderProps = {
 };
 
 export const HeaderProvider = ({children}: HeaderProviderProps): JSX.Element => {
-  const pathname = usePathname()
+
+  const pathname = usePathname();
 
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [currentTab, setCurrentTab] = useState<string>("home");
@@ -46,13 +47,12 @@ export const HeaderProvider = ({children}: HeaderProviderProps): JSX.Element => 
   };
 
   useEffect(() => {
-
-    setCurrentTab(WindowUtil.getPathname())
-    if (window.location.pathname !== "/") {
+    if (pathname !== "/") {
       setBrandPosition("top");
+      setCurrentTab(CommonUtil.getTab(pathname));
     }
     setIsLoading(false);
-  }, [])
+  }, [pathname])
 
 
   return (

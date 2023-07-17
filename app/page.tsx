@@ -4,7 +4,7 @@ import {useAnimate} from "framer-motion"
 import {useEffect} from "react";
 import {ImagesConfig} from "@/app/_common/domain/enums/config.enum";
 import {ImageModel} from "@/app/_common/domain/types/image.type";
-import ImageCardHomeComponent from "@/app/_common/components/images/image-card-home.component";
+import ImageCardHomeComponent from "@/app/_common/components/ui/cards/home-image-card.component";
 import HomeImagesColumnComponent from "@/app/_common/components/layout/home-images-column.component";
 import {useHeaderContext} from "@/app/_common/domain/contexts/header/header.context";
 

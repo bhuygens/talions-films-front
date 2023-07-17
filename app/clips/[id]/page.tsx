@@ -3,7 +3,8 @@ import React from "react";
 import VideoPlayerComponent from "@/app/_common/components/ui/video-player/video-player.component";
 
 type PageProps = {
-  id: number
+  id: number,
+  project: any
 }
 
 const details: Record<string, string> = {
@@ -12,7 +13,7 @@ const details: Record<string, string> = {
   lieu: "lieulieulieu",
 }
 
-function Page({id}: PageProps) {
+function Page() {
 
   const displayDetail = () => {
     return Object.entries(details).map(([key, value]) => {

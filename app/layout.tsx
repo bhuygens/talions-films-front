@@ -1,6 +1,5 @@
 import "./globals.css"
 import {Inter} from "next/font/google"
-import Head from "next/head";
 import Providers from "@/app/_common/domain/contexts/providers";
 
 
@@ -15,9 +14,6 @@ export const metadata = {
 export default function RootLayout({children}: { children: React.ReactNode }) {
   return (
     <html lang="en" className={inter.className}>
-    <Head>
-      <title>Home App</title>
-    </Head>
     <body className={inter.className}>
 
     <Providers>

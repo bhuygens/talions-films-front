@@ -20,6 +20,7 @@ function TabsComponent() {
       moveTabsToCenter();
     }
   }, [brandPosition])
+
   const moveTabsToTop = () => {
     animate(scope.current, {top: "10px"}, {duration: 2})
   }
@@ -40,6 +41,7 @@ function TabsComponent() {
   }
 
   const isSelectedTab = (tab: string) => {
+
     return currentTab === tab;
   }
   const generateTabs = () => {

@@ -1,7 +1,7 @@
 const Tabs = {
-  clips: "Clips",
-  events: "Evenements",
-  pubs: "Pubs",
+  clips: "clips",
+  events: "evenements",
+  pubs: "pubs",
 };
 
 const ImagesConfig = {
