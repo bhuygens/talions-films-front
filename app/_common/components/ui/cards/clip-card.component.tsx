@@ -13,7 +13,7 @@ const cloudinary = new Cloudinary({
 
 type PageProps = {
   id: string,
-  project: ClipModel
+  project: IProject
 }
 
 export function ClipCardComponent({project, id}: PageProps) {

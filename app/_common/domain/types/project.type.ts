@@ -1,4 +1,4 @@
-interface ClipModel {
+interface IProject {
   id: number,
   title: string,
   artist: string,
