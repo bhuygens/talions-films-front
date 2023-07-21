@@ -1,9 +1,11 @@
 interface IProject {
-  id: number,
-  title: string,
-  artist: string,
-  description: string,
-  url?: string,
-  camera?: string,
-  image?: string
+  id: string,
+  project_name: string,
+  client: string
+  type: string
+  image: string
+  // artist: string,
+  // description: string,
+  // url?: string,
+  // camera?: string,
 }
