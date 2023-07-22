@@ -1,0 +1,63 @@
+section {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.left-section {
+    height: 84vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 0;
+    padding: 30px;
+}
+
+.left-section-tags {
+
+}
+
+.left-section-project {
+
+}
+
+.left-section-title {
+
+}
+
+.detail-item {
+
+}
+.detail-item-title {
+
+}
+.detail-item-content {
+
+}
+
+.c-sections {
+    padding: 15px;
+    display: grid;
+    gap: 15px;
+}
+
+.content-section {
+    height: 100vh;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    font-size: 24px;
+    font-family: sans-serif;
+    color: white;
+}
+
+.grey-text {
+    color: var(--secondary-color);
+}
+
+.section-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+    background-position-x: 50%;
+}

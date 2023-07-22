@@ -4,7 +4,8 @@ interface IProject {
   client: string
   type: string
   image: string
-  // artist: string,
+  details: {},
+  date: string
   // description: string,
   // url?: string,
   // camera?: string,

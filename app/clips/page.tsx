@@ -3,6 +3,7 @@ import React, {useEffect, useState} from "react";
 import {AnimatePresence, motion} from "framer-motion";
 import ClipCardComponent from "@/app/_common/components/ui/cards/clip-card.component";
 import {Ky} from "@/app/_lib/ky.lib";
+import {CommonUtil} from "@/app/_common/utils/common.util";
 
 
 function Page() {
@@ -20,23 +21,9 @@ function Page() {
     }
   }
 
-  function updateBackgroundImage() {
-    const windowHeight = window.innerHeight
-    const elements: NodeListOf<HTMLElement> = document.querySelectorAll(".thumbnail");
-
-    const offset = -60;
-    elements.forEach(element => {
-      const parallaxEffect = element.dataset.parallaxSpeed || 0.6;
-
-      element.style.backgroundPositionY = `${
-        (+parallaxEffect * (element.getBoundingClientRect().top / windowHeight * 100))
-      }%`;
-    })
-  }
-
 
   useEffect(() => {
-    window.addEventListener("scroll", updateBackgroundImage)
+    CommonUtil.parallaxEffect();
   })
 
   return (

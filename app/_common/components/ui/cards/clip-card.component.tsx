@@ -1,6 +1,7 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {Cloudinary} from "@cloudinary/url-gen";
 import {useRouter} from "next/navigation";
+import {CommonUtil} from "@/app/_common/utils/common.util";
 
 
 const cloudinary = new Cloudinary({
@@ -26,9 +27,9 @@ export function ClipCardComponent({project}: PageProps) {
     <>
       <div
         id={project.id}
-        className="thumbnail w-full min-h-[16rem] text-center flex flex-col justify-center rounded-lg border border-white-600 cursor-pointer"
+        className="parallax-effect w-full min-h-[16rem] text-center flex flex-col justify-center rounded-lg border border-white-600 cursor-pointer"
         data-parallax-speed={0.4}
-        style={{backgroundImage: `url(${cloudinary.image(project.image).toURL()})`}}
+        style={{backgroundImage: `url(${CommonUtil.getCloudinaryUrl(project.image)})`}}
         onClick={handleClick}
       >
         <div className="p-4 mx-auto w-fit border border-4 border-white-600">
