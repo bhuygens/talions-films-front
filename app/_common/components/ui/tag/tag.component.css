@@ -1,0 +1,7 @@
+.tag {
+    border: 1px solid var(--secondary-color);
+    width: fit-content;
+    border-radius: 6px;
+    padding: 0 2px;
+    color: var(--secondary-color);
+}

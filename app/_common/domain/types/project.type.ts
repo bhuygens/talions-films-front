@@ -1,9 +1,12 @@
-interface ClipModel {
-  id: number,
-  title: string,
-  artist: string,
-  description: string,
-  url?: string,
-  camera?: string,
-  image?: string
+interface IProject {
+  id: string,
+  project_name: string,
+  client: string
+  type: string
+  image: string
+  details: {},
+  date: string
+  // description: string,
+  // url?: string,
+  // camera?: string,
 }

@@ -1,5 +1,7 @@
 import React, {useEffect} from "react";
 import {Cloudinary} from "@cloudinary/url-gen";
+import {useRouter} from "next/navigation";
+import {CommonUtil} from "@/app/_common/utils/common.util";
 
 
 const cloudinary = new Cloudinary({
@@ -12,26 +14,27 @@ const cloudinary = new Cloudinary({
 });
 
 type PageProps = {
-  id: string,
-  project: ClipModel
+  project: IProject
 }
 
-export function ClipCardComponent({project, id}: PageProps) {
+export function ClipCardComponent({project}: PageProps) {
+  const router = useRouter()
+  const handleClick = () => {
+    router.push(`/clips/${project.id}`);
+  }
 
-  useEffect(() => {
-    project
-  }, [])
   return (
     <>
       <div
-        id={id}
-        className="thumbnail w-full min-h-[16rem] text-center flex flex-col justify-center rounded-lg border border-white-600"
+        id={project.id}
+        className="parallax-effect w-full min-h-[16rem] text-center flex flex-col justify-center rounded-lg border border-white-600 cursor-pointer"
         data-parallax-speed={0.4}
-        style={{backgroundImage: `url(${cloudinary.image(project.image).toURL()})`}}
+        style={{backgroundImage: `url(${CommonUtil.getCloudinaryUrl(project.image)})`}}
+        onClick={handleClick}
       >
         <div className="p-4 mx-auto w-fit border border-4 border-white-600">
-          <h3 className="text-4xl">{project.title}</h3>
-          <p className="text-2xl">{project.artist}</p>
+          <h3 className="text-4xl">{project.project_name}</h3>
+          <p className="text-2xl">{project.client}</p>
         </div>
       </div>
     </>
