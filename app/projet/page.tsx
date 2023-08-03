@@ -1,42 +1,37 @@
 "use client"
-import React, {useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import {Ky} from "@/app/_lib/ky.lib";
-import VideoPlayerComponent from "@/app/_common/components/ui/video-player/video-player.component";
-import './style.css';
-import TagComponent from "@/app/_common/components/ui/tag/tag.component";
+import "./style.css";
 import {CommonUtil} from "@/app/_common/utils/common.util";
+import TagComponent from "@/app/_common/components/ui/tag/tag.component";
+import VideoPlayerComponent from "@/app/_common/components/ui/video-player/video-player.component";
+import {useSearchParams} from "next/navigation"
+import {useHeaderContext} from "@/app/_common/domain/contexts/header/header.context";
 
-const details: Record<string, string> = {
-  camera: "TOTOTOTO",
-  drone: "tototototo",
-  lieu: "lieulieulieu",
-};
 
-interface IResponseData {
-  date: string;
-  // Add other properties you expect in the response
-}
-
-function Page({params}: { params: { id: string } }) {
+function Page() {
   const [project, setProject] = useState<IProject | undefined>();
   const [isLoading, setIsLoading] = useState(true);
-
+  const searchParams = useSearchParams()
+  const {setCurrentTab, setBrandPosition} = useHeaderContext()
   useEffect(() => {
     CommonUtil.parallaxEffect();
+    setCurrentTab('projet');
+    setBrandPosition('top')
   }, []);
 
   useEffect(() => {
-    console.log(params.id);
-    Ky.request<IProject>("GET", `/clips/${params.id}`).then((res: IProject) => {
+    const id = searchParams.get("id");
+    const type = searchParams.get("type");
+    Ky.request<IProject>("GET", `/${type}/${id}`).then((res: IProject) => {
       res.date = CommonUtil.formatDate(res.date);
       setProject(res);
       setIsLoading(false);
     });
-
-  }, [params.id]);
+  }, []);
 
   const displayDetail = () => {
-    const details = project && project.details;
+    const details = project?.details;
     console.log(details);
 
     const elements = [];
@@ -48,7 +43,7 @@ function Page({params}: { params: { id: string } }) {
           <div className="detail-item" key={key}>
             <h1 className="detail-item-title">{CommonUtil.capitalizeFirstLetter(key)}: </h1>
             <p className="detail-item-content">{value}</p>
-          </div>
+          </div>,
         );
       }
     }
@@ -60,7 +55,7 @@ function Page({params}: { params: { id: string } }) {
     return project && <TagComponent text={project.date}/>
   }
   const getImages = () => {
-    const images = ['/1.png', '/2.png', '/3.png', '/4.png', '/5.png', '/6.png', '/7.jpeg'];
+    const images = ["/1.png", "/2.png", "/3.png", "/4.png", "/5.png", "/6.png", "/7.jpeg"];
     return images.map((path: string, key: number) => {
       return (
         <div
@@ -68,7 +63,10 @@ function Page({params}: { params: { id: string } }) {
           key={key}>
           <div
             className="section-image parallax-effect"
-            style={{backgroundImage: `url(${path})`}}></div>
+            style={{
+              backgroundImage: `
+    url(${path})`,
+            }}></div>
         </div>
       )
     });
@@ -93,9 +91,11 @@ function Page({params}: { params: { id: string } }) {
 
       </div>
       <div className="c-sections">
-        <div className="content-section">
-          <VideoPlayerComponent videoUrl={"https://vimeo.com/799837807"}/>
-        </div>
+        {project.video_url &&
+          <div className="content-section">
+            <VideoPlayerComponent videoUrl={project.video_url}/>
+          </div>
+        }
         {getImages()}
       </div>
     </section>

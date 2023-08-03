@@ -14,19 +14,21 @@ export class CommonUtil {
     const splitPath = path.split("/")[1];
 
     switch (splitPath) {
-      case "clips" :
-        return "clips";
-      case "evenements":
-        return "events";
-      case "pubs":
-        return "pubs";
+      case "clip" :
+        return "clip";
+      case "evenement":
+        return "event";
+      case "pub":
+        return "pub";
+      case "projet":
+        return "project";
       default:
-        return 'home'
+        return "home"
     }
   }
 
   public static formatDate(date: string) {
-    const splitDate = date.split('-');
+    const splitDate = date.split("-");
     const day = splitDate[2];
     const month = splitDate[1];
     const year = splitDate[0];

@@ -16,8 +16,12 @@ function TabsComponent() {
   }, [animate, scope])
 
   useEffect(() => {
+    console.log("brd posr", brandPosition);
     if (brandPosition === "middle") {
       moveTabsToCenter();
+    }
+    if (currentTab === "project") {
+      moveTabsToTop();
     }
   }, [brandPosition])
 

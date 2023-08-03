@@ -32,6 +32,10 @@ body {
     cursor: url("https://png.pngitem.com/pimgs/s/268-2681442_green-glow-light-png-transparent-png.png") pointer;
 }
 
+img {
+    height: inherit;
+}
+
 .translate-50 {
     transform: translate(-50%, -50%);
 }

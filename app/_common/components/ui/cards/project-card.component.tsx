@@ -1,26 +1,17 @@
-import React, {useEffect} from "react";
-import {Cloudinary} from "@cloudinary/url-gen";
+import React from "react";
 import {useRouter} from "next/navigation";
 import {CommonUtil} from "@/app/_common/utils/common.util";
-
-
-const cloudinary = new Cloudinary({
-  cloud: {
-    cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
-  },
-  url: {
-    secure: true,
-  },
-});
+import {ProjectType} from "@/app/_common/domain/enums/projectType";
 
 type PageProps = {
-  project: IProject
+  project: IProject,
+  type: ProjectType
 }
 
-export function ClipCardComponent({project}: PageProps) {
+export function ProjectCardComponent({project, type}: PageProps) {
   const router = useRouter()
   const handleClick = () => {
-    router.push(`/clips/${project.id}`);
+    router.push(`/projet?type=${type}&id=${project.id}`);
   }
 
   return (
@@ -41,4 +32,4 @@ export function ClipCardComponent({project}: PageProps) {
   )
 }
 
-export default ClipCardComponent;
+export default ProjectCardComponent;

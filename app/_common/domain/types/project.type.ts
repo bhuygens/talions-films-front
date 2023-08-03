@@ -6,7 +6,7 @@ interface IProject {
   image: string
   details: {},
   date: string
+  video_url?: string,
   // description: string,
-  // url?: string,
   // camera?: string,
 }
